@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21110d87d308f384880e01607fe8bb78, type: 3}
+  m_Name: NinjaTower_7
+  m_EditorClassIdentifier: 
+  towerName: "\uC2E0\uD0A4\uB85C"
+  icon: {fileID: 0}
+  prefab: {fileID: 5421526872751578395, guid: 5186901fc878ad64d939998ff5924a6b, type: 3}
+  level: 7
+  damage: 0
+  range: 0
+  attackSpeed: 0
+  raceType: 0

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21110d87d308f384880e01607fe8bb78, type: 3}
+  m_Name: GunTower_4
+  m_EditorClassIdentifier: 
+  towerName: "\uB9C8\uC6B8\uB7EC"
+  icon: {fileID: 0}
+  prefab: {fileID: 1866408595057220438, guid: 9cd5dc6d7c3bf0c4181282ef540fe6c5, type: 3}
+  level: 4
+  damage: 0
+  range: 0
+  attackSpeed: 0
+  raceType: 1

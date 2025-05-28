@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObjectPooler : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
-    [SerializeField] private int poolSize = 10;
+    [SerializeField] private int poolSize = 0;
     
     private List<GameObject> _pool;
     private GameObject _poolContainer;
@@ -43,11 +43,20 @@ public class ObjectPooler : MonoBehaviour
                 return _pool[i];
             }
         }
-        return CreateInstance();
+
+        return null;
     }
-    
+
     public static void ReturnToPool(GameObject instance)
     {
         instance.SetActive(false);
+    }
+    
+    public void ExpandPool(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            _pool.Add(CreateInstance());
+        }
     }
 }

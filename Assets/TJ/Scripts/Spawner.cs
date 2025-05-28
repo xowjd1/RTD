@@ -1,70 +1,64 @@
 using UnityEngine;
 
-public enum SpawnModes
-{
-    Fixed,
-    Random
-}
-
 public class Spawner : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] private SpawnModes spawnMode = SpawnModes.Fixed;
-    [SerializeField] private int enemyCount = 10;
-    
-    [Header("Fixed Delay")]
-    [SerializeField] private float delayBtwSpawns;
-    
-    [Header("Random Delay")]
-    [SerializeField] private float minRandomDelay;
-    [SerializeField] private float maxRandomDelay;
-    
-    private float _spawnTimer;
-    private int _enemiesSpawned;
-    
-    private ObjectPooler _pooler;
+    [Header("오브젝트 풀러")]
+    [SerializeField] private ObjectPooler[] poolers;
 
-    private void Start()
-    {
-        _pooler = GetComponent<ObjectPooler>();
-    }
+    [SerializeField] private WayPoint wayPoint;
+    [SerializeField] private float spawnInterval = 1f;
+
+    private float timer;
+
     private void Update()
     {
-        _spawnTimer -= Time.deltaTime;
-        if (_spawnTimer < 0)
+        timer += Time.deltaTime;
+
+        if (timer >= spawnInterval)
         {
-            _spawnTimer = GetSpawnDelay();
-            if (_enemiesSpawned < enemyCount)
-            {
-                _enemiesSpawned++;
-                SpawnEnemy();
-            }
+            SpawnEnemyByStage(StageManager.Instance.CurrentStage);
+            timer = 0f;
         }
-    }
-    
-    private void SpawnEnemy()
-    {
-        GameObject newInstance = _pooler.GetInstanceFromPool();
-        newInstance.SetActive(true);
     }
 
-    private float GetSpawnDelay()
+    private void SpawnEnemyByStage(int stage)
     {
-        float delay = 0f;
-        if (spawnMode == SpawnModes.Fixed)
+        ObjectPooler selectedPooler = GetPoolerForStage(stage);
+        if (selectedPooler == null)
         {
-            delay = delayBtwSpawns;
+            Debug.LogWarning($"스테이지 {stage}에 해당하는 오브젝트 풀러가 없습니다.");
+            return;
         }
-        else
+
+        selectedPooler.ExpandPool(30); // 매 스테이지마다 30개 추가
+
+        GameObject enemy = selectedPooler.GetInstanceFromPool();
+        if (enemy == null)
         {
-            delay = GetRandomDelay();
+            Debug.LogWarning($"[풀 비어있음] {selectedPooler.name} 풀에 사용 가능한 오브젝트가 없습니다.");
+            return;
         }
-        return delay;
+
+        enemy.transform.position = transform.position;
+        enemy.SetActive(true);
+
+        Enemy enemyScript = enemy.GetComponent<Enemy>();
+        if (enemyScript == null)
+        {
+            Debug.LogError("Enemy 컴포넌트가 프리팹에 없습니다.");
+            return;
+        }
+
+        enemyScript.Initialize(wayPoint);
     }
 
-    private float GetRandomDelay()
+    private ObjectPooler GetPoolerForStage(int stage)
     {
-        float randomTimer = Random.Range(minRandomDelay, maxRandomDelay);
-        return randomTimer;
+        int poolIndex = (stage - 1) / 7; // 1~7 = 0, 8~14 = 1, ..., 43~49 = 6
+        if (poolIndex >= 0 && poolIndex < poolers.Length)
+        {
+            return poolers[poolIndex];
+        }
+        return null;
     }
 }

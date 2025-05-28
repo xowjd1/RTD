@@ -4,7 +4,8 @@ using UnityEngine;
 public enum RaceType
 {
     Ninja,
-    Gun
+    Gun,
+    Staff
 }
 [CreateAssetMenu(fileName = "TowerData", menuName = "Tower/New Tower")]
 public class TowerData : ScriptableObject
@@ -16,8 +17,6 @@ public class TowerData : ScriptableObject
     public float damage;
     public float range;
     public float attackSpeed;
-    public TowerType type;
     public RaceType raceType;
-    
-    public enum TowerType { Projectile, AoE, Buff }
+
 }

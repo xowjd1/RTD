@@ -1,72 +1,37 @@
-using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public static Action OnEndReached;
-    
-    [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private WayPoint waypoint;
+    private WayPoint wayPoint;
+    [SerializeField] private float speed = 2f;
 
-    public Vector3 CurrentPointPosition => waypoint.GetWaypointPosition(_currentWaypointIndex);
-    
-    private int _currentWaypointIndex = 0;
+    private int currentIndex = 0;
+    private Vector3 targetPos;
 
-    private void Start()
+    public void Initialize(WayPoint wp)
     {
-        _currentWaypointIndex = 0;
+        wayPoint = wp;
+        currentIndex = 0;
+        transform.position = wp.GetWaypointPosition(currentIndex);
+        targetPos = wayPoint.GetWaypointPosition(currentIndex);
     }
 
     private void Update()
     {
-        Move();
-        if (CurrentPointPositionReached())
-        {
-            UpdateCurrentPointIndex();
-        }
-    }
-    
-    private void Move()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, CurrentPointPosition, moveSpeed * Time.deltaTime);
+        if (wayPoint == null) return;
+        MoveToNextPoint();
     }
 
-    private bool CurrentPointPositionReached()
+    private void MoveToNextPoint()
     {
-        float distanceToNextPointPosition = (transform.position - CurrentPointPosition).magnitude;
-        if (distanceToNextPointPosition < 0.1f)
-        {
-            return true;
-        }
+        Vector3 dir = (targetPos - transform.position).normalized;
+        transform.position += dir * speed * Time.deltaTime;
 
-        return false;
-    }
-
-    private void UpdateCurrentPointIndex()
-    {
-        int lastWaypointIndex = waypoint.Points.Length - 1;
-        if (_currentWaypointIndex < lastWaypointIndex)
+        if (Vector3.Distance(transform.position, targetPos) < 0.1f)
         {
-            _currentWaypointIndex++;
+            currentIndex = (currentIndex + 1) % wayPoint.Points.Length;
+            targetPos = wayPoint.GetWaypointPosition(currentIndex);
         }
-        else
-        {
-            ReturnEnemyToPool();
-        }
-        
     }
-
-    private void ReturnEnemyToPool()
-    {
-        /*
-        if (OnEndReached != null)
-        {
-            OnEndReached.Invoke();
-        }
-        */
-        OnEndReached?.Invoke();
-        ObjectPooler.ReturnToPool(gameObject);
-    }
-    
     
 }
