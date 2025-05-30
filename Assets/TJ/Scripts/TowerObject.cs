@@ -80,5 +80,15 @@ public class TowerObject : MonoBehaviour
         GameObject newTower = Instantiate(newData.prefab, other.transform.position, Quaternion.identity);
         TowerObject newObj = newTower.GetComponent<TowerObject>();
         newObj.Init(newData, other.owningGrid);
+        
+        Tower towerComponent = newTower.GetComponent<Tower>();
+        if (towerComponent != null)
+        {
+            int upgradeLevel = GameManager.Instance.GetUpgradeLevel(newData.raceType);
+            for (int i = 1; i < upgradeLevel; i++)
+            {
+                towerComponent.Upgrade();
+            }
+        }
     }
 }

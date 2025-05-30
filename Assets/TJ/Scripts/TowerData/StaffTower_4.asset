@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21110d87d308f384880e01607fe8bb78, type: 3}
+  m_Name: StaffTower_4
+  m_EditorClassIdentifier: 
+  towerName: "\uC2A4\uD0DC\uD5044"
+  icon: {fileID: 0}
+  prefab: {fileID: 4639394346863746315, guid: bbd5a80933f0b274388126e0e1a5f907, type: 3}
+  level: 4
+  damage: 0
+  range: 0
+  attackSpeed: 0
+  raceType: 2

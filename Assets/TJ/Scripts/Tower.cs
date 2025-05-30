@@ -23,6 +23,12 @@ public abstract class Tower : MonoBehaviour
             lastAttackTime = Time.time;
         }
     }
+    public virtual void Upgrade()
+    {
+        damage *= 1.2f;
+        attackSpeed *= 0.9f;
+    }
+
 
     protected abstract void Attack();
 }

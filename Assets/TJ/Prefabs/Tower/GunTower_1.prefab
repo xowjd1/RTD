@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5454755920321966927}
   - component: {fileID: -2505095887386700491}
   - component: {fileID: -4388659390445301164}
+  - component: {fileID: 2329885828048914611}
   m_Layer: 3
   m_Name: GunTower_1
   m_TagString: Untagged
@@ -162,3 +163,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2329885828048914611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6249498409550475541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3722b1daed13724a9248aca57fd7af3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  range: 2
+  attackSpeed: 2
+  projectilePrefab: {fileID: 4367000925092430119, guid: 14dc394b56754bc478055cef5e6c4c9c, type: 3}

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3023354864542574598}
   - component: {fileID: 2994744391535106367}
   - component: {fileID: 2532403153822581116}
+  - component: {fileID: -1061308903581804746}
   m_Layer: 3
   m_Name: NinjaTower_3
   m_TagString: Untagged
@@ -162,3 +163,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-1061308903581804746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604937993208273338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3722b1daed13724a9248aca57fd7af3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 45
+  range: 2.5
+  attackSpeed: 1.8
+  projectilePrefab: {fileID: 4367000925092430119, guid: fee9c27ea73a84b418f33f8bb4521444, type: 3}
