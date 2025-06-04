@@ -1030,6 +1030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd947bcdaf2e534c94128534087b473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNicknamePrefab: {fileID: 5802156432788621266, guid: 4f2a2d7ed02df824ab04880b865419e6, type: 3}
 --- !u!4 &400162537
 Transform:
   m_ObjectHideFlags: 0
@@ -1884,7 +1885,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 906673364}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1935342729}
+        m_TargetAssemblyTypeName: StartUIManager, Assembly-CSharp
+        m_MethodName: OnClickCoopBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &906673364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2073,7 +2086,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1005412991}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 400162536}
+        m_TargetAssemblyTypeName: NetworkManager, Assembly-CSharp
+        m_MethodName: StartCoopMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1005412991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3087,7 +3112,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1567514928}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1935342729}
+        m_TargetAssemblyTypeName: StartUIManager, Assembly-CSharp
+        m_MethodName: OnClickNickNameConfirmBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1567514928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4607,6 +4644,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905974708}
   m_CullTransparentMesh: 1
+--- !u!1 &1935342728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1935342730}
+  - component: {fileID: 1935342729}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1935342729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935342728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81caebc536899a4493f8609caef8b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NickNameUI: {fileID: 1622081297}
+  MatchingUI: {fileID: 1675632002}
+  MakingRoomUI: {fileID: 832049528}
+  JoinRoomUI: {fileID: 1219496643}
+  nicknameInputField: {fileID: 99311027}
+--- !u!4 &1935342730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935342728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 369.59238, y: 2040.6381, z: -0.5748713}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1983083256
 GameObject:
   m_ObjectHideFlags: 0
@@ -4990,3 +5076,4 @@ SceneRoots:
   - {fileID: 400162537}
   - {fileID: 1983083259}
   - {fileID: 1698770424}
+  - {fileID: 1935342730}

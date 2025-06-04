@@ -1,44 +1,36 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using Fusion;
 
 public class NicknameUIManager : MonoBehaviour
 {
-    [Header("Nickname 입력 UI")]
-    public GameObject nicknamePanel;
-    public InputField nicknameInputField;
-    public Button confirmButton;
+    [SerializeField] private TMP_Text player1Text;
+    [SerializeField] private TMP_Text player2Text;
 
-    [Header("매칭 UI")]
-    public GameObject matchingPanel;
+    private Dictionary<PlayerRef, TMP_Text> playerTexts = new Dictionary<PlayerRef, TMP_Text>();
 
-    void Start()
+    private void Start()
     {
-        nicknamePanel.SetActive(false);
-        matchingPanel.SetActive(false);
-
-        confirmButton.onClick.AddListener(OnConfirmNickname);
+        UpdateNicknameUI();
     }
 
-    public void OpenNicknamePanel()
+    public void UpdateNicknameUI()
     {
-        nicknamePanel.SetActive(true);
-    }
+        var nicknames = FindObjectsOfType<PlayerNickname>();
 
-    private void OnConfirmNickname()
-    {
-        string inputName = nicknameInputField.text.Trim();
-
-        if (string.IsNullOrEmpty(inputName))
+        foreach (var nickname in nicknames)
         {
-            Debug.LogWarning("⚠️ 닉네임을 입력하세요.");
-            return;
+            if (nickname.OwnerRef == PlayerInfo.LocalPlayerRef)
+            {
+                player1Text.text = nickname.Nickname;
+                playerTexts[nickname.OwnerRef] = player1Text;
+            }
+            else
+            {
+                player2Text.text = nickname.Nickname;
+                playerTexts[nickname.OwnerRef] = player2Text;
+            }
         }
-
-        PlayerInfo.Nickname = inputName;
-
-        Debug.Log($"✅ 닉네임 저장됨: {PlayerInfo.Nickname}");
-        
-        nicknamePanel.SetActive(false);
-        matchingPanel.SetActive(true);
     }
 }
