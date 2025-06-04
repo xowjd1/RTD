@@ -169,7 +169,7 @@ public class NetworkManager : MonoBehaviour,INetworkRunnerCallbacks
 
         foreach (var nickname in nicknames)
         {
-            nickname.SetupUI(player1Text, player2Text);
+           // nickname.SetupUI(player1Text, player2Text);
         }
     }
 
